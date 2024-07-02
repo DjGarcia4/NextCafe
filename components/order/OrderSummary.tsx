@@ -9,7 +9,7 @@ import { OrderSchema } from "@/src/schema";
 import toast from "react-hot-toast";
 
 const OrderSummary = () => {
-  const { order } = useStore();
+  const { order, clearOrder } = useStore();
   const total = useMemo(
     () => order.reduce((total, item) => total + item.quantity * item.price, 0),
     [order]
@@ -22,7 +22,6 @@ const OrderSummary = () => {
       order,
     };
     const result = OrderSchema.safeParse(data);
-    console.log(result);
     if (!result.success) {
       result.error.issues.forEach((issue) => toast.error(issue.message));
       return;
@@ -32,6 +31,8 @@ const OrderSummary = () => {
     if (response?.errors) {
       response.errors.forEach((issue) => toast.error(issue.message));
     }
+    toast.success("Pedido realizado correctamente!");
+    clearOrder();
   };
   return (
     <aside className=" lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5 bg-white shadow relative">
