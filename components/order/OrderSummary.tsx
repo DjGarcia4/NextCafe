@@ -3,7 +3,7 @@
 import { useStore } from "@/src/store";
 import ProductDetails from "./ProductDetails";
 import { useMemo } from "react";
-import { formatCurrency } from "@/src/utils";
+import { formatCurrency, getImagePath } from "@/src/utils";
 import { createOrder } from "@/actions/create-order-action";
 import { OrderSchema } from "@/src/schema";
 import toast from "react-hot-toast";
@@ -62,7 +62,7 @@ const OrderSummary = () => {
               />
               <input
                 type="submit"
-                className=" border border-orange-400 text-orange-400 rounded-full hover:text-white p-2 hover:bg-orange-400 transition-colors w-full cursor-pointer"
+                className="border border-orange-400 text-orange-400 rounded-full hover:text-white p-2 hover:bg-orange-400 transition-colors w-full cursor-pointer"
                 value={"Confirmar Pedido"}
               />
             </form>

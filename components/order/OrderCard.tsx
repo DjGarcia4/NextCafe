@@ -1,6 +1,6 @@
 import { completeOrder } from "@/actions/complete-order-action";
 import { OrderWithProducts } from "@/src/types";
-import { formatCurrency } from "@/src/utils";
+import { formatCurrency, getImagePath } from "@/src/utils";
 import Image from "next/image";
 
 type OrderCardProps = {
@@ -26,7 +26,7 @@ export default function OrderCard({ order }: OrderCardProps) {
             className="flex items-center gap-2 border-t border-gray-200 p-4"
           >
             <Image
-              src={`/products/${product.product.image}.jpg`}
+              src={getImagePath(product.product.image)}
               alt="Imagen Producto"
               width={70}
               height={170}

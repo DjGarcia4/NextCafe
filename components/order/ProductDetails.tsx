@@ -1,5 +1,5 @@
 import { OrderItem } from "@/src/types";
-import { formatCurrency } from "@/src/utils";
+import { formatCurrency, getImagePath } from "@/src/utils";
 import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +12,7 @@ type ProductDetailsProps = {
 };
 
 const ProductDetails = ({ item }: ProductDetailsProps) => {
+  const imagePath = getImagePath(item.image);
   const { increaseQuantity, decreaseQuantity, deleteItem } = useStore();
   const MIN_ITEM = 1;
   const MAX_ITEM = 5;
@@ -36,7 +37,7 @@ const ProductDetails = ({ item }: ProductDetailsProps) => {
       </button>
       <div className="flex flex-col justify-center">
         <Image
-          src={`/products/${item.image}.jpg`}
+          src={imagePath}
           alt="Imagen Itemo"
           width={80}
           height={180}
