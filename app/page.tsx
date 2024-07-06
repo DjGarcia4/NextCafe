@@ -1,5 +1,5 @@
 import { outfit } from "@/fonts/OutfitFont";
-
+import { redirect } from "next/navigation";
 export default function Home() {
-  return <h1 className={`${outfit.className}`}>Hello World!</h1>;
+  redirect("/order/cafe");
 }
